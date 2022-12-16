@@ -9,14 +9,14 @@ def start():
     my_label.pack(side="left")
 
     def button_click():
-        my_label.config(text="YES CLICKING")
+        my_label.config(text=f"{input.get()}")
 
     # Button
     button = Button(text="Click", command=button_click)
     button.pack()
 
     # Entry
-    input = Entry()
+    input = Entry(width=10)
     input.pack()
 
     window.mainloop()
