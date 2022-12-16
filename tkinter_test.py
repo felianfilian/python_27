@@ -9,7 +9,7 @@ def start():
     my_label.pack(side="left")
 
     def button_click():
-        print("YES")
+        my_label.config(text="YES CLICKING")
 
     # Button
     button = Button(text="Click", command=button_click)
