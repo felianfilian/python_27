@@ -15,5 +15,9 @@ def start():
     button = Button(text="Click", command=button_click)
     button.pack()
 
+    # Entry
+    input = Entry()
+    input.pack()
+
     window.mainloop()
 
