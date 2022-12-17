@@ -11,9 +11,23 @@ LONG_BREAK_MIN = 20
 
 
 def start():
+    # ----------Reset-----------#
+
+
+    # ----------Timer-----------#
+
+    # ----------Countdown-----------#
+
+
+
+    #----------UI-----------#
     window = Tk()
     window.title("Pomodoro")
     window.config(padx=30, pady=30, bg=YELLOW)
+
+    def say_it(word):
+        print(word)
+    window.after(1000, say_it, "hello")
 
     lbl_timer = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"), bg=YELLOW, highlightthickness=0)
     lbl_timer.grid(column=1, row=0)
