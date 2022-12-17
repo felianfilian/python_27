@@ -3,7 +3,7 @@ from tkinter import *
 def start():
     window = Tk()
     window.title("Miles to Kilometers")
-    window.minsize(width=300, height=300)
+    # window.minsize(width=300, height=300)
     window.config(padx=50, pady=50)
 
     def calc_km():
