@@ -15,9 +15,13 @@ def start():
     window.title("Pomodoro")
     window.config(padx=30, pady=30)
 
+    lbl_timer = Label(text="Timer", font=(FONT_NAME, 35, "bold"))
+    lbl_timer.grid(column=1, row=0)
+
     canvas = Canvas(width=200, height=224)
     tomato_ing = PhotoImage(file="tomato.png")
     canvas.create_image(100, 112, image=tomato_ing)
-    canvas.pack()
+    canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
+    canvas.grid(column=1, row=1)
 
     window.mainloop()
