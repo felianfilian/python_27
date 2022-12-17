@@ -18,16 +18,16 @@ def start():
 
     # ----------Countdown-----------#
 
-
+    def count_down(count):
+        print(count)
+        if count > 0:
+            window.after(1000, count_down, count - 1)
 
     #----------UI-----------#
     window = Tk()
     window.title("Pomodoro")
     window.config(padx=30, pady=30, bg=YELLOW)
-
-    def say_it(word):
-        print(word)
-    window.after(1000, say_it, "hello")
+    count_down(5)
 
     lbl_timer = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"), bg=YELLOW, highlightthickness=0)
     lbl_timer.grid(column=1, row=0)
