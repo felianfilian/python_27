@@ -4,7 +4,7 @@ PINK = "#e2979c"
 RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
-FONT_NAME = "Courier"
+FONT_NAME = "Arial"
 WORK_MIN = 25
 SHORT_BREAK_MIN = 5
 LONG_BREAK_MIN = 20
@@ -24,9 +24,9 @@ def start():
     canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
     canvas.grid(column=1, row=1)
 
-    btn_start = Button(text="START")
+    btn_start = Button(text="START", padx=20, pady=10, highlightthickness=0)
     btn_start.grid(column=0, row=2)
-    btn_reset = Button(text="RESET")
+    btn_reset = Button(text="RESET", padx=20, pady=10, highlightthickness=0)
     btn_reset.grid(column=2, row=2)
 
     lbl_check = Label(text="✔", fg=GREEN, bg=YELLOW, highlightthickness=0, font=("Arial", 20))
