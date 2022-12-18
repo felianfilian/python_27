@@ -24,6 +24,8 @@ def start():
     def count_down(count):
         count_min = int(count / 60)
         count_sec = count % 60
+        if count_sec < 10:
+            count_sec = f"0{count_sec}"
         act_time = f"{count_min}:{count_sec}"
         canvas.itemconfig(timer_txt, text=act_time)
         if count > 0:
