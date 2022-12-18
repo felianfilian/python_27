@@ -22,11 +22,14 @@ def start():
         reps += 1
         if reps >= 8:
             count_down(LONG_BREAK_MIN * 60)
+            lbl_timer.config(text="LONG BREAK", fg=RED)
             reps = 0
         elif reps % 2 == 0:
             count_down(SHORT_BREAK_MIN * 60)
+            lbl_timer.config(text="BREAK", fg=PINK)
         else:
             count_down(WORK_MIN * 60)
+            lbl_timer.config(text="WORK", fg=GREEN)
 
 
     # ----------Countdown-----------#
