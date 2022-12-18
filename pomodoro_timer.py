@@ -5,10 +5,11 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Arial"
-WORK_MIN = 25
-SHORT_BREAK_MIN = 5
+WORK_MIN = 2
+SHORT_BREAK_MIN = 1
 LONG_BREAK_MIN = 20
 
+reps = 0
 
 def start():
     # ----------Reset-----------#
@@ -17,7 +18,16 @@ def start():
     # ----------Timer-----------#
 
     def start_timer():
-        count_down(WORK_MIN * 60)
+        global reps
+        reps += 1
+        if reps >= 8:
+            count_down(LONG_BREAK_MIN * 60)
+            reps = 0
+        elif reps % 2 == 0:
+            count_down(SHORT_BREAK_MIN * 60)
+        else:
+            count_down(WORK_MIN * 60)
+
 
     # ----------Countdown-----------#
 
@@ -30,6 +40,9 @@ def start():
         canvas.itemconfig(timer_txt, text=act_time)
         if count > 0:
             window.after(1000, count_down, count - 1)
+        elif count <= 0:
+            start_timer()
+
 
     #----------UI-----------#
     window = Tk()
