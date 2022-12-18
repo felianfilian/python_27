@@ -16,11 +16,16 @@ def start():
 
     # ----------Timer-----------#
 
+    def start_timer():
+        count_down(WORK_MIN * 60)
 
     # ----------Countdown-----------#
 
     def count_down(count):
-        canvas.itemconfig(timer_txt, text=count)
+        count_min = int(count / 60)
+        count_sec = count % 60
+        act_time = f"{count_min}:{count_sec}"
+        canvas.itemconfig(timer_txt, text=act_time)
         if count > 0:
             window.after(1000, count_down, count - 1)
 
@@ -38,9 +43,7 @@ def start():
     timer_txt = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
     canvas.grid(column=1, row=1)
 
-    count_down(5)
-
-    btn_start = Button(text="START", padx=20, pady=10, highlightthickness=0)
+    btn_start = Button(text="START", padx=20, pady=10, highlightthickness=0, command=start_timer)
     btn_start.grid(column=0, row=2)
     btn_reset = Button(text="RESET", padx=20, pady=10, highlightthickness=0)
     btn_reset.grid(column=2, row=2)
