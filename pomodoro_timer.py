@@ -16,10 +16,11 @@ def start():
 
     # ----------Timer-----------#
 
+
     # ----------Countdown-----------#
 
     def count_down(count):
-        print(count)
+        canvas.itemconfig(timer_txt, text=count)
         if count > 0:
             window.after(1000, count_down, count - 1)
 
@@ -27,7 +28,6 @@ def start():
     window = Tk()
     window.title("Pomodoro")
     window.config(padx=30, pady=30, bg=YELLOW)
-    count_down(5)
 
     lbl_timer = Label(text="Timer", fg=GREEN, font=(FONT_NAME, 35, "bold"), bg=YELLOW, highlightthickness=0)
     lbl_timer.grid(column=1, row=0)
@@ -35,8 +35,10 @@ def start():
     canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
     tomato_img = PhotoImage(file="tomato.png")
     canvas.create_image(100, 112, image=tomato_img)
-    canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
+    timer_txt = canvas.create_text(100, 130, text="00:00", fill="white", font=(FONT_NAME, 35, "bold"))
     canvas.grid(column=1, row=1)
+
+    count_down(5)
 
     btn_start = Button(text="START", padx=20, pady=10, highlightthickness=0)
     btn_start.grid(column=0, row=2)
