@@ -5,11 +5,13 @@ RED = "#e7305b"
 GREEN = "#9bdeac"
 YELLOW = "#f7f5dd"
 FONT_NAME = "Arial"
+CHECKMARK = "✔"
 WORK_MIN = 2
 SHORT_BREAK_MIN = 1
 LONG_BREAK_MIN = 20
 
 reps = 0
+checkmarks=""
 
 def start():
     # ----------Reset-----------#
@@ -30,6 +32,8 @@ def start():
         else:
             count_down(WORK_MIN * 60)
             lbl_timer.config(text="WORK", fg=GREEN)
+            checkmarks = f"{checkmarks}"
+            lbl_check.config(text=)
 
 
     # ----------Countdown-----------#
@@ -66,7 +70,7 @@ def start():
     btn_reset = Button(text="RESET", padx=20, pady=10, highlightthickness=0)
     btn_reset.grid(column=2, row=2)
 
-    lbl_check = Label(text="✔", fg=GREEN, bg=YELLOW, highlightthickness=0, font=("Arial", 20))
+    lbl_check = Label(text="", fg=GREEN, bg=YELLOW, highlightthickness=0, font=("Arial", 20))
     lbl_check.grid(column=1, row=3)
 
     window.mainloop()
