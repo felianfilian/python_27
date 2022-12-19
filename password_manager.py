@@ -1,6 +1,11 @@
 from tkinter import *
 
 def start():
+
+    def save():
+        with open("./pw_manager/data.txt", mode="w") as file:
+            file.write("test")
+
     window = Tk()
     window.title("Password Manager")
     window.config(padx=40, pady=40)
@@ -27,7 +32,7 @@ def start():
 
     btn_gen_pass = Button(text="Generate Password", padx=20)
     btn_gen_pass.grid(row=3, column=2)
-    btn_add = Button(text="Add")
+    btn_add = Button(text="Add", command=save)
     btn_add.grid(row=4, column=1, columnspan=2, sticky="EW")
 
     window.mainloop()
