@@ -6,6 +6,9 @@ def start():
         with open("./pw_manager/data.txt", mode="a") as file:
             save_data = f"{ent_website.get()} | {ent_mail.get()} | {ent_pass.get()}\n"
             file.write(save_data)
+            ent_website.delete(0, END)
+            ent_mail.delete(0, END)
+            ent_pass.delete(0, END)
 
     window = Tk()
     window.title("Password Manager")
