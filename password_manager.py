@@ -3,8 +3,9 @@ from tkinter import *
 def start():
 
     def save():
-        with open("./pw_manager/data.txt", mode="w") as file:
-            file.write("test")
+        with open("./pw_manager/data.txt", mode="a") as file:
+            save_data = f"{ent_website.get()} | {ent_mail.get()} | {ent_pass.get()}\n"
+            file.write(save_data)
 
     window = Tk()
     window.title("Password Manager")
@@ -26,7 +27,7 @@ def start():
     ent_website.grid(row=1, column=1, columnspan=2, sticky="EW")
     ent_mail = Entry()
     ent_mail.grid(row=2, column=1, columnspan=2, sticky="EW")
-    ent_mail.insert(0, "peter@reter.pot")
+    ent_mail.focus()
     ent_pass = Entry()
     ent_pass.grid(row=3, column=1, sticky="EW")
 
