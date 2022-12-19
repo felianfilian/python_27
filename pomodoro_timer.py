@@ -11,17 +11,29 @@ SHORT_BREAK_MIN = 1
 LONG_BREAK_MIN = 20
 
 reps = 0
-checkmarks=""
+checkmarks = ""
 
 def start():
+
     # ----------Reset-----------#
 
+    def reset_timer():
+        global reps
+        global checkmarks
+        global timer
+        window.after_cancel(timer)
+        canvas.itemconfig(timer_txt, text="00:00")
+        checkmarks=""
+        lbl_check.config(text=checkmarks)
+        lbl_timer.config(text="TIMER")
+        reps = 0
 
     # ----------Timer-----------#
 
     def start_timer():
         global checkmarks
         global reps
+        print(reps)
         reps += 1
         if reps >= 8:
             count_down(LONG_BREAK_MIN * 60)
@@ -40,6 +52,7 @@ def start():
     # ----------Countdown-----------#
 
     def count_down(count):
+
         count_min = int(count / 60)
         count_sec = count % 60
         if count_sec < 10:
@@ -47,7 +60,8 @@ def start():
         act_time = f"{count_min}:{count_sec}"
         canvas.itemconfig(timer_txt, text=act_time)
         if count > 0:
-            window.after(10, count_down, count - 1)
+            global timer
+            timer = window.after(10, count_down, count - 1)
         elif count <= 0:
             start_timer()
 
@@ -68,7 +82,7 @@ def start():
 
     btn_start = Button(text="START", padx=20, pady=10, highlightthickness=0, command=start_timer)
     btn_start.grid(column=0, row=2)
-    btn_reset = Button(text="RESET", padx=20, pady=10, highlightthickness=0)
+    btn_reset = Button(text="RESET", padx=20, pady=10, highlightthickness=0, command=reset_timer)
     btn_reset.grid(column=2, row=2)
 
     lbl_check = Label(text="", fg=GREEN, bg=YELLOW, highlightthickness=0, font=("Arial", 20))
