@@ -21,6 +21,7 @@ def start():
     ent_website.grid(row=1, column=1, columnspan=2, sticky="EW")
     ent_mail = Entry()
     ent_mail.grid(row=2, column=1, columnspan=2, sticky="EW")
+    ent_mail.insert(0, "peter@reter.pot")
     ent_pass = Entry()
     ent_pass.grid(row=3, column=1, sticky="EW")
 
