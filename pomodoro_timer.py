@@ -20,6 +20,7 @@ def start():
     # ----------Timer-----------#
 
     def start_timer():
+        global checkmarks
         global reps
         reps += 1
         if reps >= 8:
@@ -32,8 +33,8 @@ def start():
         else:
             count_down(WORK_MIN * 60)
             lbl_timer.config(text="WORK", fg=GREEN)
-            checkmarks = f"{checkmarks}"
-            lbl_check.config(text=)
+            checkmarks += CHECKMARK
+            lbl_check.config(text=checkmarks)
 
 
     # ----------Countdown-----------#
@@ -46,7 +47,7 @@ def start():
         act_time = f"{count_min}:{count_sec}"
         canvas.itemconfig(timer_txt, text=act_time)
         if count > 0:
-            window.after(1000, count_down, count - 1)
+            window.after(10, count_down, count - 1)
         elif count <= 0:
             start_timer()
 
