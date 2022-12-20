@@ -1,14 +1,21 @@
 from tkinter import *
+from tkinter import messagebox
 
 def start():
 
     def save():
-        with open("./pw_manager/data.txt", mode="a") as file:
-            save_data = f"{ent_website.get()} | {ent_mail.get()} | {ent_pass.get()}\n"
-            file.write(save_data)
-            ent_website.delete(0, END)
-            ent_mail.delete(0, END)
-            ent_pass.delete(0, END)
+        my_website = ent_website.get()
+        my_email = ent_mail.get()
+        my_pass = ent_pass.get()
+
+        is_ok = messagebox.askokcancel(title=f"{my_website}", message="You want to save?")
+        if is_ok:
+            with open("./pw_manager/data.txt", mode="a") as file:
+                save_data = f"{my_website} | {my_email} | {my_pass}\n"
+                file.write(save_data)
+                ent_website.delete(0, END)
+                ent_mail.delete(0, END)
+                ent_pass.delete(0, END)
 
     window = Tk()
     window.title("Password Manager")
