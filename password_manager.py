@@ -8,6 +8,10 @@ def start():
         my_email = ent_mail.get()
         my_pass = ent_pass.get()
 
+        if my_website=="" or my_email=="" or my_pass=="":
+            messagebox.showinfo(title="Fields missing", message="Please fill out all the fields")
+            return
+
         is_ok = messagebox.askokcancel(title=f"{my_website}", message="You want to save?")
         if is_ok:
             with open("./pw_manager/data.txt", mode="a") as file:
