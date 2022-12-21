@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
 import random
+import json
 
 letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u',
                'v', 'w', 'x', 'y', 'z', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
@@ -18,8 +19,6 @@ def start():
         nr_symbols = random.randint(2, 4)
         nr_numbers = random.randint(2, 4)
 
-        password_list = []
-
         pass_letters = [random.choice(letters) for _ in range(nr_letters)]
         pass_symbols = [random.choice(symbols) for _ in range(nr_symbols)]
         pass_numbers = [random.choice(numbers) for _ in range(nr_numbers)]
@@ -36,19 +35,26 @@ def start():
         my_website = ent_website.get()
         my_email = ent_mail.get()
         my_pass = ent_pass.get()
+        new_data = {
+            my_website: {
+                "email": my_email,
+                "password": my_pass,
+            }
+        }
 
         if my_website=="" or my_email=="" or my_pass=="":
             messagebox.showinfo(title="Fields missing", message="Please fill out all the fields")
-            return
+        else:
+            is_ok = messagebox.askokcancel(title=f"{my_website}", message="You want to save?")
+            if is_ok:
+                with open("./pw_manager/data.json", mode="w") as file:
+                    # save_data = f"{my_website} | {my_email} | {my_pass}\n"
+                    # file.write(save_data)
+                    data = json.dump(new_data, file, indent=4)
 
-        is_ok = messagebox.askokcancel(title=f"{my_website}", message="You want to save?")
-        if is_ok:
-            with open("./pw_manager/data.txt", mode="a") as file:
-                save_data = f"{my_website} | {my_email} | {my_pass}\n"
-                file.write(save_data)
-                ent_website.delete(0, END)
-                ent_mail.delete(0, END)
-                ent_pass.delete(0, END)
+                    ent_website.delete(0, END)
+                    ent_mail.delete(0, END)
+                    ent_pass.delete(0, END)
 
     window = Tk()
     window.title("Password Manager")

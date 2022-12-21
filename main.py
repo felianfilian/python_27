@@ -9,6 +9,6 @@ import exceptions
 # arguments_test.start()
 # mile_kilometer_calc.start()
 # pomodoro_timer.start()
-# password_manager.start()
-exceptions.start()
+password_manager.start()
+# exceptions.start()
 
