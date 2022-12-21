@@ -11,7 +11,6 @@ symbols = ['!', '#', '$', '%', '&', '(', ')', '*', '+']
 def start():
 
     #-------Password Manager---------#
-
     def generate_pass():
         ent_pass.delete(0,END)
 
@@ -29,10 +28,6 @@ def start():
         random.shuffle(password_list)
 
         password = "".join(password_list)
-
-        # password = ""
-        # for char in password_list:
-        #     password += char
         ent_pass.insert(0,password)
 
     #-----------------#
