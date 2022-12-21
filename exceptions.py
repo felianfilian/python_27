@@ -2,6 +2,9 @@
 
 def start():
     try:
-        file = open("test.txt")
+        fruit = ["apple"]
+        print(fruit[1])
     except:
-        print("file not exist")
+        print("no index")
+
+    
