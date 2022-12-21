@@ -13,6 +13,8 @@ def start():
     #-------Password Manager---------#
 
     def generate_pass():
+        ent_pass.delete(0,END)
+
         nr_letters = random.randint(8, 10)
         nr_symbols = random.randint(2, 4)
         nr_numbers = random.randint(2, 4)
@@ -33,7 +35,7 @@ def start():
         password = ""
         for char in password_list:
             password += char
-        return password
+        ent_pass.insert(0,password)
 
     #-----------------#
 
@@ -79,7 +81,7 @@ def start():
     ent_pass = Entry()
     ent_pass.grid(row=3, column=1, sticky="EW")
 
-    btn_gen_pass = Button(text="Generate Password", padx=20)
+    btn_gen_pass = Button(text="Generate Password", command=generate_pass)
     btn_gen_pass.grid(row=3, column=2)
     btn_add = Button(text="Add", command=save)
     btn_add.grid(row=4, column=1, columnspan=2, sticky="EW")
