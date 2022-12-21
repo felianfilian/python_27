@@ -21,20 +21,18 @@ def start():
 
         password_list = []
 
-        for char in range(nr_letters):
-            password_list.append(random.choice(letters))
+        pass_letters = [random.choice(letters) for _ in range(nr_letters)]
+        pass_symbols = [random.choice(symbols) for _ in range(nr_symbols)]
+        pass_numbers = [random.choice(numbers) for _ in range(nr_numbers)]
 
-        for char in range(nr_symbols):
-            password_list += random.choice(symbols)
-
-        for char in range(nr_numbers):
-            password_list += random.choice(numbers)
-
+        password_list = pass_letters + pass_symbols + pass_numbers
         random.shuffle(password_list)
 
-        password = ""
-        for char in password_list:
-            password += char
+        password = "".join(password_list)
+
+        # password = ""
+        # for char in password_list:
+        #     password += char
         ent_pass.insert(0,password)
 
     #-----------------#
