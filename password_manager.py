@@ -31,6 +31,9 @@ def start():
 
     #-----------------#
 
+    def search_websie():
+        pass
+
     def save():
         my_website = ent_website.get()
         my_email = ent_mail.get()
@@ -47,12 +50,18 @@ def start():
         else:
             is_ok = messagebox.askokcancel(title=f"{my_website}", message="You want to save?")
             if is_ok:
-                with open("./pw_manager/data.json", mode="r") as file:
-                    data = json.load(file)
+                try:
+                    with open("./pw_manager/data.json", mode="r") as file:
+                        data = json.load(file)
+                except FileNotFoundError:
+                    messagebox.showinfo(title="new file", message="Created new data file")
+                    with open("./pw_manager/data.json", mode="w") as file:
+                        json.dump(new_data, file, indent=4)
+                else:
                     data.update(new_data)
-                with open("./pw_manager/data.json", mode="w") as file:
-                    json.dump(data, file, indent=4)
-
+                    with open("./pw_manager/data.json", mode="w") as file:
+                        json.dump(data, file, indent=4)
+                finally:
                     ent_website.delete(0, END)
                     ent_mail.delete(0, END)
                     ent_pass.delete(0, END)
@@ -81,8 +90,10 @@ def start():
     ent_pass = Entry()
     ent_pass.grid(row=3, column=1, sticky="EW")
 
+    btn_gen_pass = Button(text="Search", command=search_websie)
+    btn_gen_pass.grid(row=1, column=2, sticky="EW")
     btn_gen_pass = Button(text="Generate Password", command=generate_pass)
-    btn_gen_pass.grid(row=3, column=2)
+    btn_gen_pass.grid(row=3, column=2, sticky="EW")
     btn_add = Button(text="Add", command=save)
     btn_add.grid(row=4, column=1, columnspan=2, sticky="EW")
 
