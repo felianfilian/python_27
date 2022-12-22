@@ -32,11 +32,16 @@ def start():
     #-----------------#
 
     def search_websie():
+        website = ent_website.get()
         with open("./pw_manager/data.json", mode="r") as file:
             data = json.load(file)
             for key in data:
-                if key == ent_website.get():
-                    messagebox.showinfo(title="data", message={data[key]})
+                if key == website:
+                    email = data[key]["email"]
+                    password = data[key]["password"]
+                    messagebox.showinfo(title="data", message=f"{email}\n{password}"
+                else
+                    messagebox.showinfo(title="Error", message="data not found")
 
     def save():
         my_website = ent_website.get()
