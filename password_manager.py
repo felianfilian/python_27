@@ -48,13 +48,14 @@ def start():
             is_ok = messagebox.askokcancel(title=f"{my_website}", message="You want to save?")
             if is_ok:
                 with open("./pw_manager/data.json", mode="r") as file:
-                    # data = json.dump(new_data, file, indent=4)
                     data = json.load(file)
+                    data.update(new_data)
+                with open("./pw_manager/data.json", mode="w") as file:
+                    json.dump(data, file, indent=4)
 
-
-                    # ent_website.delete(0, END)
-                    # ent_mail.delete(0, END)
-                    # ent_pass.delete(0, END)
+                    ent_website.delete(0, END)
+                    ent_mail.delete(0, END)
+                    ent_pass.delete(0, END)
 
     window = Tk()
     window.title("Password Manager")
