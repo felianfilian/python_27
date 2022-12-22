@@ -36,7 +36,7 @@ def start():
             data = json.load(file)
             for key in data:
                 if key == ent_website.get():
-                    print("well done")
+                    messagebox.showinfo(title="data", message={data[key]})
 
     def save():
         my_website = ent_website.get()
@@ -87,7 +87,7 @@ def start():
     lbl_pass.grid(row=3, column=0)
 
     ent_website = Entry()
-    ent_website.grid(row=1, column=1, columnspan=2, sticky="EW")
+    ent_website.grid(row=1, column=1, sticky="EW")
     ent_mail = Entry()
     ent_mail.grid(row=2, column=1, columnspan=2, sticky="EW")
     ent_mail.focus()
