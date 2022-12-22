@@ -32,7 +32,11 @@ def start():
     #-----------------#
 
     def search_websie():
-        pass
+        with open("./pw_manager/data.json", mode="r") as file:
+            data = json.load(file)
+            for key in data:
+                if key == ent_website.get():
+                    print("well done")
 
     def save():
         my_website = ent_website.get()
