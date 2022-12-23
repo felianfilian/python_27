@@ -39,8 +39,8 @@ def start():
                 if key == website:
                     email = data[key]["email"]
                     password = data[key]["password"]
-                    messagebox.showinfo(title="data", message=f"{email}\n{password}"
-                else
+                    messagebox.showinfo(title="data", message=f"{email}\n{password}")
+                else:
                     messagebox.showinfo(title="Error", message="data not found")
 
     def save():
